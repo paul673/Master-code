@@ -100,7 +100,7 @@ class ToxicityFilter(MedicinalChemFilter):
     def __init__(self):
         self.toxic_smarts = [
             "[N+](=O)[O-]",  # Nitro groups
-            "[#6](=O)[#8]",  # Carboxylic acid
+            #"[#6](=O)[#8]",  # Carboxylic acid
             "[F,Cl,Br,I][C,c]=[C,c]",  # Halogen-substituted electrophiles
             "[S,s]~[S,s]",  # Disulfides
             "[C;R][C;R]",  # Strained rings
@@ -221,6 +221,9 @@ class OxygenChainsFilter(MedicinalChemFilter):
     
     def apply(self, mol: Mol) -> bool:
         trajs,lengths = self.okygen_chains(mol)
+        if len(trajs) == 0:
+            # No oxygen
+            return True
         return max(lengths.keys()) <= self.max_oxygen_chain_length
     
     @classmethod

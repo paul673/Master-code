@@ -85,6 +85,28 @@ def calc_min_max(filename: str, quantile: float = 0.01) -> tuple[pd.core.series.
 
 def get_tuned_filter_list(filename: str, quantile: float = 0.01) -> list:
     minv, maxv= calc_min_max(filename, quantile=quantile)
+    print("\n" + "#" * 60)
+    print("#{:^58}#".format("Initialize MCFs"))
+    print("#" * 60 + "\n")
+
+    print("{:<38} {:>10} {:>10}".format("Filter", "Min", "Max"))
+    print("-" * 60)
+
+    print("{:<38} {:>10.2f} {:>10.2f}".format("LogP", minv["logP"], maxv["logP"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("Molecular Weight", minv["Mw"], maxv["Mw"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("HBAB + HBD", 0, maxv["HBABHBD"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("TPSA", 0, maxv["TPSA"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("Rotatable Bonds", 0, maxv["NRB"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("NO2 Groups", 0, maxv["NO2"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("Heteroatoms", 0, maxv["Heteroatoms"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("Aromatic Rings", 0, maxv["AromaticRings"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("Atom Count", 0, maxv["AtomCount"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("Triple Bonds", 0, maxv["TripleBonds"]))
+    print("{:<38} {:>10.2f} {:>10.2f}".format("Oxygen Chain Length", 0, 1))
+
+    print("\n" + "#" * 60)
+
+
     all_filters = [
         mcf.LogPFilter(min_logp=minv["logP"], max_logp=maxv["logP"]),
         mcf.MolecularWeightFilter(min_mw=minv["Mw"],max_mw=maxv["Mw"]),

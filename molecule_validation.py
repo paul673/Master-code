@@ -7,7 +7,7 @@ import pickle
 
 from mcf_parameters import get_tuned_filter_list
 FILENAME = "openpomdata.csv"
-all_filters = get_tuned_filter_list(FILENAME,quantile=0.01)
+all_filters = get_tuned_filter_list(FILENAME,quantile=0.05)
 # Load model
 model_fname = "laura/odorant_classifier.pkl"
 with open(model_fname,"rb") as f:
@@ -44,3 +44,4 @@ if __name__ == "__main__":
     m = "COC1=C(C=CC(=C1)C=O)O"
     print(is_odorant(Chem.MolFromSmiles(m)).astype(int))
     print(score_molecule(Chem.MolFromSmiles(m)))
+    print(score_molecule(Chem.MolFromSmiles("CCCC")))
