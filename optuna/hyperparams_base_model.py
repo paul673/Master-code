@@ -23,7 +23,7 @@ import socket
 from gflownet.envs.mol_building_env import MolBuildingEnvContext
 
 
- from submodels.openpom.functions import fragance_propabilities_from_smiles
+from submodels.openpom.functions import fragance_propabilities_from_smiles
 
 from numpy.linalg import norm
 

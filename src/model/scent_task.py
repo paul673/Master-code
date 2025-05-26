@@ -3,8 +3,8 @@ Import packages
 """
 
 # GFlowNET imports
-from gflownet.config import Config # Config object required for initializing the model
-from gflownet import GFNTask,LogScalar,ObjectProperties # Task is used for specifiyng the models objective (Reward)
+from src.submodels.gflownet.config import Config # Config object required for initializing the model
+from src.submodels.gflownet import GFNTask,LogScalar,ObjectProperties # Task is used for specifiyng the models objective (Reward)
 
 
 # torch imports

@@ -2,10 +2,10 @@
 
 
 # GFlowNET imports
-from gflownet.config import Config # Config object required for initializing the model
-from gflownet.utils.misc import create_logger # For logging
-from gflownet.online_trainer import StandardOnlineTrainer # The Trainer class of this model modifies StandardOnlineTrainer
-from gflownet.envs.mol_building_env import MolBuildingEnvContext # used to construct molecules from atoms
+from src.submodels.gflownet.config import Config # Config object required for initializing the model
+from src.submodels.gflownet.utils.misc import create_logger # For logging
+from src.submodels.gflownet.online_trainer import StandardOnlineTrainer # The Trainer class of this model modifies StandardOnlineTrainer
+from src.submodels.gflownet.envs.mol_building_env import MolBuildingEnvContext # used to construct molecules from atoms
 
 # torch imports
 import torch
