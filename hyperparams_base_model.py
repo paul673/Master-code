@@ -23,12 +23,12 @@ import socket
 from gflownet.envs.mol_building_env import MolBuildingEnvContext
 
 
-from pom_models.functions import fragance_propabilities_from_smiles
+ from submodels.openpom.functions import fragance_propabilities_from_smiles
 
 from numpy.linalg import norm
 
 # MCF imports
-from molecule_validation import is_odorant, score_molecule
+from base_model.filters.molecule_validation import is_odorant, score_molecule
 
 TARGET_SMILES = "COC1=C(C=CC(=C1)C=O)O"
 TARGET_VEC = fragance_propabilities_from_smiles(TARGET_SMILES)[0]
@@ -56,7 +56,7 @@ def df_pom_pom(openpom_file="OpenPOM_probs.csv", vanilla_only=False):
         scent_values = row[1:].to_numpy()  # Get the scent values from the row (excluding the first column)
         
         # Apply cosine similarity between the row's scent values and the vanilla correlation vector
-        return cosine_similarity(scent_values, vanilla_corr)  # Replace this with your actual function
+        return cosine_similarity(scent_values, vanilla_corr)  #  
 
     # Apply the custom function to each row
     df_openpom['shift_reward'] = df_openpom.apply(custom_function, axis=1)
